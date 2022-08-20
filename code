@@ -1,0 +1,163 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            double Rub, Usd, Euro;
+            float currencyCount; 
+            double usdToRub = 59, usdToEuro = 1, euroToRub = 59, euroToUsd = 1, rubToUsd = 0.017, rubToEuro = 0.017;
+            string userInput;
+
+            Console.WriteLine("Вас приветствует конвертер валют");
+            Console.WriteLine($"Доллар к рублю: {usdToRub}, доллар к евро: {usdToEuro}, евро к рублю: {euroToRub}, \n" +
+                $"евро к доллару: {euroToUsd}, рубль к доллару: {rubToUsd}, рубль к евро: {rubToEuro} \n");
+
+            Console.Write("Баланс рублей: ");
+            Rub = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Баланс долларов: ");
+            Usd = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Баланс евро: ");
+            Euro = Convert.ToInt32(Console.ReadLine());
+     
+            Console.WriteLine(" ");
+
+            while (true) 
+            {  Console.WriteLine("Что вы хотите обменять ");
+              Console.WriteLine("1-обменять доллар на рубль");
+              Console.WriteLine("2-обменять доллар на евро");
+              Console.WriteLine("3-обменять евро на рубль");
+              Console.WriteLine("4-обменять евро на доллар");
+              Console.WriteLine("5-обменять рубль на доллар");
+              Console.WriteLine("6-обменять рубль на евро");
+              userInput = Console.ReadLine();
+              
+
+                if (userInput == "exit")
+                {
+                    Console.WriteLine("Программа завершилась");
+                    break;
+                }
+
+                switch (userInput)
+                {
+                    case "1":
+                        Console.WriteLine("Это обменник доллар на рубль");
+                        Console.WriteLine("Какую сумму долларов хотите обменять");
+                        currencyCount = Convert.ToInt32(Console.ReadLine());
+                        if (Usd >= currencyCount)
+                        {
+                            Usd -= currencyCount;
+                            Rub += currencyCount * usdToRub;
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не верно введена сумма");
+                        }
+                        break;
+
+                    case "2":
+                        Console.WriteLine("Это обменник доллар на евро");
+                        Console.WriteLine("Какую сумму долларов хотите обменять");
+                        currencyCount = Convert.ToInt32(Console.ReadLine());
+                        if (Usd >= currencyCount)
+                        {
+                            Usd -= currencyCount;
+                            Euro += currencyCount / usdToEuro;
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не верно введена сумма");
+                        }
+                        break;
+
+                    case "3":
+                        Console.WriteLine("Это обменник евро на рубль");
+                        Console.WriteLine("Какую сумму евро хотите обменять");
+                        currencyCount = Convert.ToInt32(Console.ReadLine());
+                        if (Euro >= currencyCount)
+                        {
+                            Euro -= currencyCount;
+                            Rub += currencyCount * euroToRub;
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не верно введена сумма");
+                        }
+                        break;
+
+                    case "4":
+                        Console.WriteLine("Это обменник евро на доллар");
+                        Console.WriteLine("Какую сумму евро хотите обменять");
+                        currencyCount = Convert.ToInt32(Console.ReadLine());
+                        if (Euro >= currencyCount)
+                        {
+                            Euro -= currencyCount;
+                            Usd += currencyCount * euroToUsd;
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не верно введена сумма");
+                        }
+                        break;
+
+                    case "5":
+                        Console.WriteLine("Это обменник рубль на доллар");
+                        Console.WriteLine("Какую сумму рублей хотите обменять");
+                        currencyCount = Convert.ToInt32(Console.ReadLine());
+                        if (Rub >= currencyCount)
+                        {
+                            Rub -= currencyCount;
+                            Usd += currencyCount / rubToUsd;
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не верно введена сумма");
+                        }
+                        break;
+
+                    case "6":
+                        Console.WriteLine("Это обменник рубль на евро");
+                        Console.WriteLine("Какую сумму евро хотите обменять");
+                        currencyCount = Convert.ToInt32(Console.ReadLine());
+                        if (Rub >= currencyCount)
+                        {
+                            Rub -= currencyCount;
+                            Euro += currencyCount / rubToEuro;
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Не верно введена сумма");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Что-то не так ввели");
+                        break;
+
+                }
+
+                Console.WriteLine($"У вас сейчас {Usd} долларов, {Rub} рублей и {Euro} евро");
+               
+                
+            }
+            
+            
+
+        }
+
+    }
+}
